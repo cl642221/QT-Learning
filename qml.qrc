@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>app.qml</file>
+        <file>LayoutHeaderView.qml</file>
+        <file>LayoutBottomView.qml</file>
+        <file>PageHomeVIew.qml</file>
+        <file>MusicIconButton.qml</file>
     </qresource>
 </RCC>
