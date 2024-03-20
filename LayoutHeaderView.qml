@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 
+
 ToolBar{
     id: top_Bar
     background: Rectangle{
@@ -15,23 +16,53 @@ ToolBar{
 
         anchors.fill: parent
         //spacing: 4
-        ToolButton{
+        MusicToolButton{
 
-            icon.source: "qrc:/images/music"
-            width: 32
-            height:32
+            iconSource: "qrc:/images/music"
+            toolTip:"当前播放"
 
-        }
-        ToolButton{
-            icon.source: "qrc:/images/about"
-            width: 32
-            height:32
 
         }
-        ToolButton{
-            icon.source: "qrc:/images/small-screen.png"
-            width: 32
-            height:32
+        MusicToolButton{
+            iconSource: "qrc:/images/about"
+            toolTip: "关于"
+
+
+        }
+        MusicToolButton{
+            id:smallWindow
+            iconSource: "qrc:/images/small-window.png"
+            toolTip: "小窗播放"
+
+            onClicked: {
+                window.height = 650
+                window.width = 400
+                window.x = (Screen.width-window.width )/2
+                window.y = (Screen.height-window.height )/2
+                normalWindow.visible=true
+                smallWindow.visible=false
+            }
+
+
+
+        }
+
+        MusicToolButton{
+            id:normalWindow
+            iconSource: "qrc:/images/exit-small-window.png"
+            toolTip: "退出小窗播放"
+            visible:false
+
+            onClicked: {
+                window.height = window.mWindow_HEIGHT
+                window.width = window.mWindow_WIDTH
+                window.x = (Screen.width-window.width)/2
+                window.y = (Screen.height-window.height )/2
+                normalWindow.visible=false
+                smallWindow.visible=true
+            }
+
+
 
         }
         // 弹性布局，，可以填充满剩下的部分，把前面的icon挤到开始处
@@ -44,24 +75,25 @@ ToolBar{
                 font.bold: true
                 font.pointSize: 24
                 font.family: "Arial"
+                color: "#ffffff"
             }
         }
-        ToolButton{
-            icon.source: "qrc:/images/full-screen"
-            width: 32
-            height:32
+        MusicToolButton{
+            iconSource: "qrc:/images/full-screen"
+            toolTip: "全屏"
+
 
         }
-        ToolButton{
-            icon.source: "qrc:/images/power"
-            width: 32
-            height:32
+        MusicToolButton{
+           iconSource: "qrc:/images/power"
+           toolTip: "退出"
+
 
         }
-        ToolButton{
-            icon.source: "qrc:/images/minimize-screen"
-            width: 32
-            height:32
+        MusicToolButton{
+            iconSource: "qrc:/images/minimize-screen"
+            toolTip: "最小化"
+
 
         }
 

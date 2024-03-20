@@ -3,8 +3,12 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 ApplicationWindow {
-    width: 1200
-    height: 800
+    id: window
+    property int mWindow_WIDTH: 1200 // 变量可以在其他程序块里使用， 原本属性， 当需要恢复到原始属性时
+    property int mWindow_HEIGHT: 800
+    width: mWindow_WIDTH
+    height: mWindow_HEIGHT
+
     visible: true // false: invisible of the window
     title: qsTr("Demo Cloud Music Player")
 
