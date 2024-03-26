@@ -140,6 +140,7 @@ ToolBar{
     }
     //弹窗
     Popup{
+
         id: aboutPop
 //        topInset: 0
 //        leftInset: -2
@@ -166,7 +167,7 @@ ToolBar{
             Image{
                 Layout.preferredHeight: 60
                 fillMode: Image.PreserveAspectFit
-                Layout.fillWidth: true
+                Layout.fillWidth: true /*没有加这句话之前，图片和文字不在弹窗中心， 文字不能占位，加上这句，用图片占位使图片和文字置于中心位置*/
                 source: "qrc:/images/music"
 
             }
