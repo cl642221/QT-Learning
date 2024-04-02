@@ -33,7 +33,7 @@ ToolBar{
             toolTip: "关于"
 
             onClicked: {
-              Qt.openUrlExternally("https://www.hyz.cool") // open an external website
+                Qt.openUrlExternally("https://www.hyz.cool") // open an external website
             }
 
 
@@ -96,7 +96,7 @@ ToolBar{
             //visible: true
 
             onClicked:{
-                window.visibility = Window.Maximized
+                window.visibility = Window.Maximized //退出全屏时没有如果重新设置window.visibility,则会出现无法重新全屏的bug
                 //setWindowSize(Screen.width, Screen.height) // /* bug: 这种方式让最上面的原始toolbar超出屏幕尺寸范围*/
                 maxWindow.visible = false
                 resize.visible = true
@@ -104,15 +104,28 @@ ToolBar{
 
         }
 
-        /* bug，退出全屏之后无法全屏 */
+        /* !已解决bug，退出全屏之后无法全屏 */
         MusicToolButton{
             id: resize
             iconSource: "qrc:/images/small-screen"
             toolTip: "退出全屏" // need an button to exit the fullscreen
-            visible: false
+            visible: false // 当visible为false时，按钮不会占位
             onClicked:{
-
+                /*
+                    setWindowSize()
+                    window.visibility = Window.AutomaticVisibility
+                    这两句调换顺序的话，会出现bug，在小窗情况下全屏，
+                    再退出全屏，会回到初始窗口大小，而不是小窗
+                    ！！！！！！！逻辑暂时无法理解
+                */
                 setWindowSize()
+                window.visibility = Window.AutomaticVisibility
+                /*etting the window's visibility to AutomaticVisibility means the window's visibility state is automatically managed.
+This typically depends on the window's current state or the application's state, such as responding to being minimized, maximized, or restored.
+If you change the window size after setting it to AutomaticVisibility, there's a possibility that this new size is not properly registered as the "restore" size for when the window exits fullscreen mode.
+Instead, the window management system might revert the window to the size it had when AutomaticVisibility was first applied, ignoring subsequent size adjustments.*/
+
+
                 maxWindow.visible = true
                 resize.visible = false
 
@@ -120,8 +133,11 @@ ToolBar{
         }
 
         MusicToolButton{
-           iconSource: "qrc:/images/power"
-           toolTip: "退出"
+            iconSource: "qrc:/images/power"
+            toolTip: "退出"
+            onClicked: {
+                Qt.quit() // 关闭程序
+            }
 
 
         }
@@ -142,10 +158,10 @@ ToolBar{
     Popup{
 
         id: aboutPop
-//        topInset: 0
-//        leftInset: -2
-//        rightInset: 0
-//        bottomInset: 0
+        //        topInset: 0
+        //        leftInset: -2
+        //        rightInset: 0
+        //        bottomInset: 0
         parent: Overlay.overlay //下面的示例使用附加的 Overlay.overlay 属性将弹出窗口定位在窗口中央，而不考虑打开弹出窗口的按钮的位置
         x: (parent.width -width)/2
         y: (parent.height -height)/2

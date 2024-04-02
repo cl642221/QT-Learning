@@ -6,6 +6,7 @@ ApplicationWindow {
     id: window
     property int mWindow_WIDTH: 1200 // 变量可以在其他程序块里使用， 原本属性， 当需要恢复到原始属性时
     property int mWindow_HEIGHT: 800
+    property string mFONT_FAMILY: "微软雅黑" // 全局变量
     width: mWindow_WIDTH
     height: mWindow_HEIGHT
 

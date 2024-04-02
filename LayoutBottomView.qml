@@ -50,7 +50,7 @@ Rectangle{
                 //anchors.bottomMargin: 5 //Layout.bottomargin文字出头， 和slider不对齐
                 anchors.leftMargin: 5
                 text: "周杰伦-稻香"
-                font.family: "微软雅黑"
+                font.family: window.mFONT_FAMILY
                 color: "#ffffff"
             }
             Text {
@@ -60,7 +60,7 @@ Rectangle{
                 //anchors.bottomMargin: 5
                 anchors.rightMargin: 5
                 text: "00:00/05:30"
-                font.family: "微软雅黑"
+                font.family: window.mFONT_FAMILY
                 color: "#ffffff"
             }
             Slider{
