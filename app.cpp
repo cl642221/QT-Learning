@@ -1,13 +1,14 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QIcon>
-
+#include "httputils.h"
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QGuiApplication app(argc, argv);
+    qmlRegisterType<HttpUtils>("MyUtils", 1, 0, "HttpUtils"); //注册
 
     // set windows icon
     app.setWindowIcon(QIcon(":/images/music.png"));

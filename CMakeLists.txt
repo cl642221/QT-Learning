@@ -41,6 +41,7 @@ else()
 add_executable(MusicPlayer
           ${PROJECT_SOURCES}
           images.qrc
+          httputils.h httputils.cpp
 
         )
     endif()
