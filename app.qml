@@ -18,18 +18,18 @@ ApplicationWindow {
         id: http
     }
 
-    Component.onCompleted: {
-        textHttp()
-    }
-    function textHttp(){
-        function onReply(reply){
-            console.log(reply) //打印
-            http.onReplySignal.disconnect(onReply)//断开连接
-        }
+//    Component.onCompleted: {
+//        textHttp()
+//    }
+//    function textHttp(){
+//        function onReply(reply){
+//            console.log(reply) //打印
+//            http.onReplySignal.disconnect(onReply)//断开连接
+//        }
 
-        http.onReplySignal.connect(onReply) // 绑定.h里的RePlaySignal
-        http.conNet("banner")
-    }
+//        http.onReplySignal.connect(onReply) // 绑定.h里的RePlaySignal
+//        http.conNet("banner")
+//    }
 
     ColumnLayout{
         anchors.fill: parent // when full screen, then the size changed according to the size of screen

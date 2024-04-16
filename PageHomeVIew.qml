@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.3
 import QtQml 2.12
 
 RowLayout{
-
+    spacing: 0
     // 定义一个数组属性，包含每个菜单项的图标、文本和对应的QML视图页面
     property var qmlList: [
         {icon: "recommend-white", value: "推荐内容", qml: "DetailRecommendPageView"},
